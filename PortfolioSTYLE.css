@@ -1,0 +1,745 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: rgb(0, 0, 0);
+  color: white;
+}
+
+/* -----------custom Scrollbar------------ */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #505644;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #77ae0c;
+}
+
+/* background image */
+#header_image {
+  width: 100%;
+  height: 100vh;
+  background-image: url(images/My_image.png);
+  background-size: cover;
+  background-position: center;
+}
+
+/* navigation */
+.navigation {
+  padding: 10px 16px;
+  background: black;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+/* right nav div */
+.right {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 650;
+  font-style: bold;
+  margin-left: 10%;
+}
+.name_logo {
+  color: burlywood;
+  width: 140px;
+}
+.left {
+  margin-right: 10%;
+}
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 10px 20px;
+  font-size: 18px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+nav ul li a:hover {
+  color: burlywood;
+}
+
+.header_text {
+  margin-top: 10%;
+  margin-left: 10%;
+}
+.p1 {
+  font-family: "Inconsolata", monospace;
+  font-size: 25px;
+}
+
+.header_text > h1 {
+  font-family: "Inconsolata", monospace;
+  font-weight: 700;
+  font-size: 5rem;
+}
+
+#name_tag {
+  font-family: "Inconsolata", monospace;
+  font-size: 6.5rem;
+  font-weight: 600;
+  color: #77ae0c;
+}
+
+.p2 {
+  margin-top: 10px;
+  margin-left: 10%;
+  font-family: "Inconsolata", monospace;
+  font-size: 15px;
+}
+
+/* main starts */
+
+/* -------------------about me--------------------- */
+
+#about {
+  padding: 90px 0;
+}
+
+.row-1 {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: 10%;
+}
+
+.about-col-1 {
+  flex-basis: 35%;
+}
+.about-col-1 img {
+  width: 100%;
+  border-radius: 20px;
+}
+.about-col-2 {
+  flex-basis: 60%;
+}
+.about-text {
+  font-size: 60px;
+  font-weight: 700;
+}
+.about-detail-text {
+  font-family: "Inconsolata", monospace;
+  margin-right: 15%;
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 18px;
+}
+.about-tabs {
+  display: flex;
+  margin: 20px 0 40px;
+}
+.tab-links {
+  margin-right: 50px;
+  font-size: 18px;
+  font-weight: 700px;
+  cursor: pointer;
+  position: relative;
+}
+.tab-links::after {
+  content: "";
+  width: 0%;
+  height: 2.5px;
+  background: yellow;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: 0.5s;
+}
+.tab-links.active-link::after {
+  width: 50%;
+}
+
+.tabs {
+  display: none;
+}
+.tabs.active-tab {
+  display: block;
+}
+/* skill tab link */
+.skill-tab-grid-container {
+  max-width: 475px;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 100px);
+  gap: 15px;
+}
+
+.skill-tab-grid-container > div {
+  background: rgb(39, 27, 27);
+  text-align: center;
+  padding: 20px;
+  border: 1px solid rgb(16, 16, 16);
+  border-radius: 12px;
+  transition: border 0.2s;
+}
+.skill-tab-grid-container div:hover {
+  border: 1px solid #77ae0c;
+}
+.skill-tab-grid-container div {
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  position: relative;
+}
+.skill-tab-grid-container div .tootip {
+  font-family: "Inconsolata", monospace;
+  visibility: hidden;
+  width: 100px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -50px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.skill-tab-grid-container div:hover .tootip {
+  visibility: visible;
+  opacity: 0.8;
+}
+.skill-tab-grid-container div .tootip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+/* experience tab link */
+.experience-tab-grid-container {
+  max-width: 575px;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 150px);
+  gap: 15px;
+}
+.experience-tab-grid-container > div {
+  background: rgb(39, 27, 27);
+  text-align: left;
+  padding: 20px;
+  border: 1px solid rgb(16, 16, 16);
+  border-radius: 12px;
+  transition: border 0.2s;
+}
+.experience-tab-grid-container div:hover {
+  border: 1px solid #77ae0c;
+}
+.experience-tab-grid-container div span {
+  color: #77ae0c;
+  font-family: "Inconsolata", monospace;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+.experience-tab-grid-container div h5 {
+  font-family: "Inconsolata", monospace;
+  margin-top: 10px;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.experience-tab-grid-container div li {
+  font-family: "Inconsolata", monospace;
+  margin-top: 15px;
+  font-size: 1rem;
+}
+
+/* education  tab link */
+.education-tab-grid-container {
+  max-width: 575px;
+  max-height: 315px;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(6, 150px);
+  gap: 15px;
+  overflow-y: auto;
+}
+.education-tab-grid-container::-webkit-scrollbar {
+  width: 5px;
+}
+.education-tab-grid-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.education-tab-grid-container::-webkit-scrollbar-thumb {
+  background: #77ae0c;
+  border-radius: 2.5px;
+}
+.education-tab-grid-container::-webkit-scrollbar-thumb:hover {
+  background: #505644;
+}
+.education-tab-grid-container div {
+  background: rgb(39, 27, 27);
+  text-align: left;
+  padding: 20px;
+  border: 1px solid rgb(16, 16, 16);
+  border-radius: 12px;
+  transition: border 0.2s;
+}
+.education-tab-grid-container div:hover {
+  border: 1px solid #77ae0c;
+}
+.education-tab-grid-container div span {
+  color: #77ae0c;
+  font-family: "Inconsolata", monospace;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+.education-tab-grid-container div h5 {
+  font-family: "Inconsolata", monospace;
+  margin-top: 10px;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.education-tab-grid-container div li {
+  font-family: "Inconsolata", monospace;
+  margin-top: 15px;
+  font-size: 1rem;
+}
+
+/* ---------------Services-------------- */
+.services-text {
+  font-size: 60px;
+  font-weight: 700;
+}
+#services {
+  padding: 30px 0;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: 250px;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.services-list div {
+  background: rgb(39, 27, 27);
+  padding: 40px;
+  font-size: 13px;
+  font-weight: 300;
+  border-radius: 10px;
+  transition: background 0.5s, transform 0.5s;
+}
+.services-list div a {
+  text-decoration: none;
+  color: white;
+}
+.services-list div:hover {
+  transform: translateY(-10px);
+  background: burlywood;
+}
+.services-list div img {
+  margin-bottom: 30px;
+}
+.services-list div h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.services-list div p {
+  font-family: "Inconsolata", monospace;
+  font-size: 12px;
+  font-weight: 700;
+}
+/* -----------------My-Work-------------- */
+.my-work-text {
+  font-size: 60px;
+  font-weight: 700;
+}
+#my-work {
+  padding: 50px 0;
+  margin: 10%;
+}
+
+.my-work-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* grid-template-rows: 250px; */
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.work {
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.work img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  transition: transform 0.5s;
+}
+.layer {
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(rgba(137, 134, 134, 0.4), burlywood);
+  border-radius: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  transition: height 0.5s;
+}
+.layer h3 {
+  font-weight: 500px;
+  margin-bottom: 20px;
+}
+.layer p {
+  font-size: 14px;
+  font-family: "Inconsolata", monospace;
+}
+.layer a {
+  margin-top: 20px;
+  color: rgb(16, 16, 16);
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 50px;
+  background: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-align: center;
+}
+.work:hover img {
+  transform: scale(1.1);
+}
+.work:hover .layer {
+  height: 100%;
+}
+.btn {
+  font-family: "Inconsolata", monospace;
+  font-size: 15px;
+  display: block;
+  margin: 50px auto;
+  width: fit-content;
+  border: 1px solid rgb(247, 234, 234);
+  padding: 14px 50px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: white;
+  transition: background 0.3s;
+}
+.btn:hover {
+  background: linear-gradient(burlywood, rgb(233, 169, 85));
+}
+
+/* --------------Contact Me-------------- */
+.row {
+  margin-left: 10%;
+  display: flex;
+}
+.contact-left {
+  flex-basis: 35%;
+}
+.contact-text {
+  font-size: 60px;
+  font-weight: 700;
+}
+.contact-right {
+  flex-basis: 60%;
+}
+.contact-left p {
+  margin-top: 30px;
+  font-family: "Inconsolata", monospace;
+}
+.contact-left p i {
+  color: burlywood;
+  margin-right: 15px;
+  font-size: 25px;
+}
+.social-icons {
+  margin-top: 30px;
+}
+.social-icons a {
+  text-decoration: none;
+  font-size: 20px;
+  margin-right: 15px;
+  color: white;
+  display: inline-block;
+  transition: transform 0.5s;
+}
+.social-icons a:hover {
+  color: burlywood;
+  transform: translateY(-5px);
+}
+.btn.btn2 {
+  display: inline-block;
+  background: linear-gradient(burlywood, rgb(233, 169, 85));
+  color: black;
+  font-weight: 400;
+  font-family: "Inconsolata", monospace;
+}
+
+.contact-right form {
+  width: 100%;
+}
+form input,
+form textarea {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: rgb(38, 36, 36);
+  padding: 15px;
+  margin: 15px 0;
+  color: burlywood;
+  font-size: 18px;
+  border-radius: 6px;
+}
+form .btn2 {
+  padding: 14px 60px;
+  font-size: 18px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-family: "Inconsolata", monospace;
+}
+.copyright {
+  width: 100%;
+  text-align: center;
+  padding: 25px 0;
+  background: rgb(16, 16, 16);
+  font-family: "Inconsolata", monospace;
+  font-weight: 300;
+  margin-top: 20px;
+}
+#sent {
+  color: #77ae0c;
+  margin-top: -40px;
+  display: block;
+  font-family: "Inconsolata", monospace;
+}
+
+/* Making website text non-selectabale */
+
+.unselectable {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+/* Making website text selection color different */
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: white;
+  background: #77ae0c;
+}
+
+::selection {
+  color: white;
+  background: #77ae0c;
+}
+
+/* screen optimization css */
+
+#cross {
+  display: none;
+}
+#bar {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  #header_image {
+    background-image: url(images/My_image_phone.png);
+  }
+  .header_text {
+    margin-top: 100%;
+    font-size: 16px;
+  }
+  .p1 {
+    font-size: 12px;
+  }
+  .header_text h1 {
+    font-size: 35px;
+  }
+  #name_tag {
+    font-size: 45px;
+  }
+  .p2 {
+    font-size: 12px;
+  }
+  #cross {
+    display: block;
+    font-size: 25px;
+    color: white;
+  }
+  #bar {
+    display: block;
+    font-size: 25px;
+    color: burlywood;
+  }
+  .right {
+    font-size: 35px;
+  }
+  nav ul {
+    background: burlywood;
+    position: fixed;
+    top: 0;
+    right: -200px;
+    width: 200px;
+    height: 100vh;
+    padding-top: 50px;
+    z-index: 2;
+    /* opacity: 0.7; */
+    transition: right 0.5s;
+  }
+  nav ul li {
+    display: block;
+    margin: 25px;
+  }
+  nav ul li a {
+    color: white;
+  }
+  #cross {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    cursor: pointer;
+  }
+  #bar {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+  }
+
+  .about-col-1,
+  .about-col-2 {
+    flex-basis: 90%;
+  }
+  .about-col-1 {
+    margin-bottom: 30px;
+  }
+  .about-text {
+    font-size: 40px;
+  }
+  .about-detail-text {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  .tab-links {
+    font-size: 16px;
+    margin-right: 20px;
+  }
+  .skill-tab-grid-container {
+    max-width: 225px;
+    max-height: 215px;
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat(4, 100px);
+    overflow-y: auto;
+  }
+  .skill-tab-grid-container > div {
+    padding: 20px;
+  }
+  .skill-tab-grid-container::-webkit-scrollbar {
+    width: 5px;
+  }
+  .skill-tab-grid-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .skill-tab-grid-container::-webkit-scrollbar-thumb {
+    background: #77ae0c;
+    border-radius: 2.5px;
+  }
+
+  .skill-tab-grid-container div:hover .tootip {
+    visibility: hidden;
+  }
+  .experience-tab-grid-container {
+    max-width: 230px;
+    max-height: 255px;
+    grid-template-columns: 220px;
+    grid-template-rows: repeat(4, 120px);
+    overflow-y: auto;
+  }
+  .experience-tab-grid-container div span {
+    font-size: 12px;
+  }
+  .experience-tab-grid-container div h5 {
+    font-size: 20px;
+  }
+  .experience-tab-grid-container div li {
+    font-size: 14px;
+  }
+  .experience-tab-grid-container::-webkit-scrollbar {
+    width: 5px;
+  }
+  .experience-tab-grid-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .experience-tab-grid-container::-webkit-scrollbar-thumb {
+    background: #77ae0c;
+    border-radius: 2.5px;
+  }
+  .education-tab-grid-container {
+    max-width: 230px;
+    max-height: 255px;
+    grid-template-columns: 220px;
+    grid-template-rows: repeat(12, 120px);
+  }
+  .education-tab-grid-container div span {
+    font-size: 11px;
+  }
+  .education-tab-grid-container div h5 {
+    font-size: 16px;
+  }
+  .education-tab-grid-container div li {
+    font-size: 12px;
+  }
+  .services-text {
+    font-size: 40px;
+  }
+  .my-work-text {
+    font-size: 40px;
+  }
+  .contact-text {
+    font-size: 40px;
+  }
+  .row {
+    display: inline;
+  }
+  .contact-left,
+  .contact-right {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .copyright {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <title>UMAR</title>
+    <!-- Font "Ubuntu" -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font "Montserrat" -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Inconsolata -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="PortfolioSTYLE.css" rel="stylesheet" type="text/css" />
+    <script
+      src="https://kit.fontawesome.com/a02d140d7e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+  </head>
+  <body>
+    <header id="header">
+      <div id="header_image">
+        <div class="navigation">
+          <nav>
+            <div class="right unselectable">
+              <span class="name_logo">U</span>mar.
+            </div>
+            <div class="left unselectable">
+              <ul id="sidemenu">
+                <li><a href="#header" onclick="closemenu()">Home</a></li>
+                <li><a href="#about" onclick="closemenu()">About</a></li>
+                <li><a href="#services" onclick="closemenu()">Services</a></li>
+                <li><a href="#my-work" onclick="closemenu()">My Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <i
+                  class="fa-solid fa-xmark"
+                  id="cross"
+                  onclick="closemenu()"
+                ></i>
+              </ul>
+              <i class="fa-solid fa-bars" id="bar" onclick="openmenu()"></i>
+            </div>
+          </nav>
+        </div>
+        <div class="header_text unselectable">
+          <p class="p1">Software Developer</p>
+          <h1>Hello I'm</h1>
+          <h1 id="name_tag">Md Umar</h1>
+        </div>
+        <div>
+          <p class="p2 unselectable">
+            I excel at crafting elegant digital experiences and<br />
+            I am proficient in various programming languages and <br />
+            technologies.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- About Page -->
+      <div id="about">
+        <div class="about-container">
+          <div class="row-1">
+            <div class="about-col-1 unselectable">
+              <img src="images/user.png" />
+            </div>
+            <div class="about-col-2 unselectable">
+              <h1 class="about-text">About Me</h1>
+              <p class="about-detail-text">
+                Hey there,👋 I'm UMAR MCA grad who is passionate about Software
+                Development, UI/UX Design and Product Management. I'm a creative
+                and skilled Developer and maintaining responsive websites and
+                apps. Proficient in HTML, CSS, JavaScript, C, C++ in addition to
+                modern libraries and frameworks.
+              </p>
+              <div class="about-tabs">
+                <p class="tab-links active-link" onclick="openTab('skills')">
+                  Skills
+                </p>
+                <p class="tab-links" onclick="openTab('experience')">
+                  Experience
+                </p>
+                <p class="tab-links" onclick="openTab('education')">
+                  Education
+                </p>
+              </div>
+              <div class="tabs active-tab" id="skills">
+                <div class="skill-tab-grid-container">
+                  <div>
+                    <img src="images/C_logo.png" alt="C" /><span class="tootip"
+                      >C</span
+                    >
+                  </div>
+                  <div>
+                    <img src="images/Cpp.png" alt="C++" /><span class="tootip"
+                      >C++</span
+                    >
+                  </div>
+                  <div>
+                    <img src="images/Java_logo.png" alt="Java" /><span
+                      class="tootip"
+                      >Java</span
+                    >
+                  </div>
+                  <div>
+                    <img src="images/Python_logo.png" alt="Python" /><span
+                      class="tootip"
+                      >Python</span
+                    >
+                  </div>
+                  <div>
+                    <img
+                      src="images/Javascript_logo.png"
+                      alt="JavaScript"
+                    /><span class="tootip">JavaScript</span>
+                  </div>
+                  <div>
+                    <img src="images/HTML_logo.png" alt="HTML" /><span
+                      class="tootip"
+                      >HTML</span
+                    >
+                  </div>
+                  <div>
+                    <img src="images/CSS_logo.png" alt="CSS" /><span
+                      class="tootip"
+                      >CSS</span
+                    >
+                  </div>
+                  <div>
+                    <img src="images/SQL_logo.png" alt="SQL" /><span
+                      class="tootip"
+                      >SQL</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="tabs" id="experience">
+                <div class="experience-tab-grid-container">
+                  <div>
+                    <span>2020-2024</span>
+                    <h5>Senior Assoicate</h5>
+                    <li>EXL Pvt. Ltd.</li>
+                  </div>
+                  <div>
+                    <span>2021</span>
+                    <h5>Gaphic Designer</h5>
+                    <li>DFY Graphics</li>
+                  </div>
+                  <div>
+                    <span>2021</span>
+                    <h5>Fund Raiser</h5>
+                    <li>Muskurahat Foundation</li>
+                  </div>
+                  <div>
+                    <span>2014-2020</span>
+                    <h5>Teaching</h5>
+                    <li>Private Tutor</li>
+                  </div>
+                </div>
+              </div>
+              <div class="tabs" id="education">
+                <div class="education-tab-grid-container">
+                  <div>
+                    <span>2020-2022</span>
+                    <h5>MCA</h5>
+                    <li>GGIPU, Delhi</li>
+                  </div>
+                  <div>
+                    <span>2023</span>
+                    <h5>MBA</h5>
+                    <li>Jamia Millia Islamia(ODL)</li>
+                  </div>
+                  <div>
+                    <span>2015-2019</span>
+                    <h5>BSc</h5>
+                    <li>IGNOU, Delhi</li>
+                  </div>
+                  <div>
+                    <span>2022</span>
+                    <h5>
+                      Certification C++<br />
+                      Programming
+                    </h5>
+                    <li>NPTEL(IIT Bombay)</li>
+                  </div>
+                  <div>
+                    <span>2022</span>
+                    <h5>
+                      Computer Architecture<br />
+                      & Organization
+                    </h5>
+                    <li>NPTEL(IIT Kharagpur)</li>
+                  </div>
+                  <div>
+                    <span>2022</span>
+                    <h5>Certification C prog.<br />& Assembly Language</h5>
+                    <li>NPTEL(IIT Madras)</li>
+                  </div>
+                  <div>
+                    <span>2022</span>
+                    <h5>
+                      Certification Big<br />
+                      Data Computing
+                    </h5>
+                    <li>NPTEL(IIT Kanpur)</li>
+                  </div>
+                  <div>
+                    <span>2022</span>
+                    <h5>AI Constraint Satisfaction</h5>
+                    <li>NPTEL(IIT Madras)</li>
+                  </div>
+                  <div>
+                    <span>2022</span>
+                    <h5>Introduction to Quantum Computing</h5>
+                    <li>NPTEL(IIT Madras)</li>
+                  </div>
+                  <div>
+                    <span>2021</span>
+                    <h5>Certification Fund. of Computer System</h5>
+                    <li>NPTEL(IGNOU)</li>
+                  </div>
+                  <div>
+                    <span>2021</span>
+                    <h5>
+                      Certification C<br />
+                      programming
+                    </h5>
+                    <li>NPTEL(IIT Kanpur)</li>
+                  </div>
+                  <div>
+                    <span>2021</span>
+                    <h5>Certification Software Engineering</h5>
+                    <li>NPTEL(IIT Kharagpur)</li>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Services Page -->
+      <div id="services">
+        <div class="service-container">
+          <h1 class="services-text unselectable">My Services</h1>
+          <div class="services-list unselectable">
+            <div>
+              <a href="#contact">
+                <img src="images/Web Design.png" alt="" />
+                <h2>Web Design</h2>
+                <p>
+                  I specialize in creating captivating digital experiences that
+                  blend creativity with functionality.
+                </p>
+              </a>
+            </div>
+            <div>
+              <a href="#contact">
+                <img src="images/UI Design.png" alt="" />
+                <h2>UI/UX Design</h2>
+                <p>
+                  I have a passion for blending aesthetics with functionality
+                  and create visually appealing digital experiences through
+                  meticulous UI/UX design.
+                </p>
+              </a>
+            </div>
+            <div>
+              <a href="#contact">
+                <img src="images/App Design.png" alt="" />
+                <h2>App Design</h2>
+                <p>
+                  I specialize in designing impactful and user-centric
+                  applications that seamlessly blend functionality with
+                  aesthetics.
+                </p>
+              </a>
+            </div>
+            <div>
+              <a href="#contact">
+                <img src="images/Logo Design.png" alt="" />
+                <h2>Logo Design</h2>
+                <p>
+                  I specialize in crafting unique and memorable logos that
+                  effectively communicate the essence of your brand.
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- My Work -->
+      <div id="my-work">
+        <div class="my-work-container">
+          <h1 class="my-work-text unselectable">My Work</h1>
+          <div class="my-work-list unselectable">
+            <div class="work">
+              <img src="images/work-1.png" alt="" />
+              <div class="layer">
+                <h3>Digital Assistant</h3>
+                <p>
+                  Harnessing Python and NLP, I've crafted a dynamic digital
+                  assistant, seamlessly blending AI capabilities with intuitive
+                  user interactions
+                </p>
+                <a
+                  href="https://github.com/MDUmar-sudo/Digital-Assistant---FRIDAY"
+                  target="_blank"
+                  ><i class="fa-solid fa-square-arrow-up-right"></i
+                ></a>
+              </div>
+            </div>
+            <div class="work">
+              <img src="images/work-2.png" alt="" />
+              <div class="layer">
+                <h3>Object Detection App</h3>
+                <p>
+                  An advance object detection app, leveraging cutting-edge
+                  technology to identify and analyze objects in real-time.
+                </p>
+                <a
+                  href="https://github.com/MDUmar-sudo/TRON-using-CNN-/tree/master"
+                  target="_blank"
+                  ><i class="fa-solid fa-square-arrow-up-right"></i
+                ></a>
+              </div>
+            </div>
+            <div class="work">
+              <img src="images/work-3.png" alt="" />
+              <div class="layer">
+                <h3>ChatBot</h3>
+                <p>
+                  Experience a sophisticated Python chatbot powered by NLTK,
+                  PyTorch, and Tinkter, offering seamless interaction and
+                  advanced natural language understanding.
+                </p>
+                <a href="https://github.com/MDUmar-sudo/ChatBot" target="_blank"
+                  ><i class="fa-solid fa-square-arrow-up-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="btn unselectable">See More</a>
+        </div>
+      </div>
+      <!-- Contact -->
+      <div id="contact">
+        <div class="contact-container">
+          <div class="row">
+            <div class="contact-left">
+              <h1 class="contact-text unselectable">Contact Me</h1>
+              <p>
+                <i class="fa-solid fa-paper-plane unselectable"></i
+                >risingsheikh@gmail.com
+              </p>
+              <p><i class="fa-solid fa-location-dot"></i> Delhi, India</p>
+              <div class="social-icons unselectable">
+                <a
+                  href="https://www.facebook.com/rising.sheikh/"
+                  target="_blank"
+                  ><i class="fa-brands fa-square-facebook unselectable"></i
+                ></a>
+                <a
+                  href="https://www.linkedin.com/in/md-umar-16b048249"
+                  target="_blank"
+                  ><i class="fa-brands fa-linkedin unselectable"></i
+                ></a>
+                <a href="https://github.com/MDUmar-sudo" target="_blank"
+                  ><i class="fa-brands fa-github unselectable"></i
+                ></a>
+                <a href="https://x.com/RisingMD1" target="_blank"
+                  ><i class="fa-brands fa-square-x-twitter unselectable"></i
+                ></a>
+              </div>
+              <a
+                href="Downloadable Files/Md Umar CV.pdf"
+                download=""
+                class="btn btn2 unselectable"
+                >Download CV</a
+              >
+            </div>
+            <div class="contact-right unselectable">
+              <form onsubmit="emailSend(); reset(); return false;">
+                <input
+                  id="name"
+                  type="text"
+                  name="Name"
+                  placeholder="Your Name"
+                  required
+                />
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                />
+                <textarea
+                  id="message"
+                  name="Message"
+                  rows="6"
+                  placeholder="Your Message"
+                ></textarea>
+                <button type="submit" class="btn btn2">Submit</button>
+              </form>
+              <span id="sent" class="unselectable"></span>
+            </div>
+          </div>
+        </div>
+        <div class="copyright unselectable">
+          <p>©️ Umar. All rights reserved.</p>
+        </div>
+      </div>
+    </main>
+
+    <script src="PortfolioLOGIC.js"></script>
+  </body>
+</html>
