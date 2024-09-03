@@ -563,15 +563,13 @@ form .btn2 {
   color: white;
   background: #77ae0c;
 }
-
-/* screen optimization css */
-
 #cross {
   display: none;
 }
 #bar {
   display: none;
 }
+/* screen optimization css */
 
 @media only screen and (max-width: 600px) {
   #header_image {
