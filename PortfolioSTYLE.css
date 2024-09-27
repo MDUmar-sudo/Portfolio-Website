@@ -11,8 +11,9 @@ body {
   background: rgb(0, 0, 0);
   color: white;
 }
-
-/* -----------custom Scrollbar------------ */
+/* ==================================== */
+/* Custom Scrollbar */
+/* ==================================== */
 ::-webkit-scrollbar {
   width: 7px;
 }
@@ -26,20 +27,38 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #77ae0c;
 }
-
-/* background image */
-#header_image {
-  width: 100%;
-  height: 100vh;
-  background-image: url(images/My_image.png);
-  background-size: cover;
-  background-position: center;
+/* ==================================== */
+/* Text Selection Color */
+/* ==================================== */
+::-moz-selection {
+  /* Code for Firefox */
+  color: white;
+  background: #77ae0c;
 }
 
+::selection {
+  color: white;
+  background: #77ae0c;
+}
+/* ==================================== */
+/*  Unselectabale */
+/* ==================================== */
+.unselectable {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+/* ==================================== */
 /* navigation */
+/* ==================================== */
 .navigation {
-  padding: 10px 16px;
-  background: black;
+  padding: 2px, 16px, 2px;
+  background: rgb(40, 39, 39);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 99999;
+  height: 60px;
 }
 nav {
   display: flex;
@@ -47,7 +66,6 @@ nav {
   align-items: center;
   flex-wrap: wrap;
 }
-/* right nav div */
 .right {
   font-family: "Ubuntu", sans-serif;
   font-size: 3.5rem;
@@ -56,7 +74,7 @@ nav {
   margin-left: 10%;
 }
 .name_logo {
-  color: burlywood;
+  color: #77ae0c;
   width: 140px;
 }
 .left {
@@ -75,42 +93,99 @@ nav ul li a {
   transition: color 0.2s;
 }
 nav ul li a:hover {
-  color: burlywood;
+  color: #77ae0c;
+}
+/* ==================================== */
+/* Home Page */
+/* ==================================== */
+.home-wrapper {
+  width: 100%;
+  padding: 0;
+  margin-top: 15%;
+  margin-bottom: 15%;
+  display: flex;
 }
 
+/* ------------------- Typewriter animation -------------------- */
+.wrapper {
+  display: flex;
+  margin-top: 3%;
+}
+.wrapper .typed-text {
+  height: 30px;
+  line-height: 30px;
+  overflow: hidden;
+}
+.typed-text li {
+  font-family: "Inconsolata", monospace;
+  font-size: 30px;
+  list-style: none;
+  position: relative;
+  top: 0;
+  font-weight: 500;
+  color: #046a38;
+  animation: slide 20s steps(5) infinite;
+}
+@keyframes slide {
+  100% {
+    top: -150px;
+  }
+}
+.typed-text li {
+  position: relative;
+}
+.typed-text li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  border-left: 3px solid #06038d;
+  animation: typing 4s infinite;
+}
+@keyframes typing {
+  40%,
+  60% {
+    left: calc(90% + 30px);
+  }
+  90% {
+    left: 0;
+  }
+}
 .header_text {
-  margin-top: 10%;
   margin-left: 10%;
 }
-.p1 {
-  font-family: "Inconsolata", monospace;
-  font-size: 25px;
-}
-
-.header_text > h1 {
+.header_text h1 {
   font-family: "Inconsolata", monospace;
   font-weight: 700;
   font-size: 5rem;
+  color: #ff671f;
 }
-
 #name_tag {
   font-family: "Inconsolata", monospace;
   font-size: 6.5rem;
   font-weight: 600;
-  color: #77ae0c;
+  color: white;
 }
 
-.p2 {
-  margin-top: 10px;
-  margin-left: 10%;
-  font-family: "Inconsolata", monospace;
-  font-size: 15px;
+.profile-image {
+  margin-left: 25%;
+  margin-top: -8%;
+  text-align: center;
 }
 
-/* main starts */
+.profile-image img {
+  height: 550px;
+  width: 500px;
+  border-radius: 50%;
+  border: 7px solid whitesmoke;
+  box-shadow: 0px 0px 20px 10px rgba(12, 55, 119, 0.9);
+}
 
-/* -------------------about me--------------------- */
-
+/* ==================================== */
+/* About me */
+/* ==================================== */
 #about {
   padding: 90px 0;
 }
@@ -124,10 +199,49 @@ nav ul li a:hover {
 
 .about-col-1 {
   flex-basis: 35%;
+  position: relative;
 }
 .about-col-1 img {
   width: 100%;
   border-radius: 20px;
+  margin-bottom: -0.5%;
+}
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.about-col-1::after,
+.about-col-1::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(
+    from var(--angle),
+    transparent 60%,
+    burlywood,
+    rgb(233, 169, 85)
+  );
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 1px;
+  border-radius: 20px;
+  animation: 3s spin linear infinite;
+}
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+.about-col-1::before {
+  filter: blur(1.5rem);
+  opacity: 0.5;
 }
 .about-col-2 {
   flex-basis: 60%;
@@ -135,13 +249,15 @@ nav ul li a:hover {
 .about-text {
   font-size: 60px;
   font-weight: 700;
+  color: #77ae0c;
 }
 .about-detail-text {
   font-family: "Inconsolata", monospace;
   margin-right: 15%;
   margin-top: 10px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 18px;
+  color: burlywood;
 }
 .about-tabs {
   display: flex;
@@ -174,7 +290,8 @@ nav ul li a:hover {
 .tabs.active-tab {
   display: block;
 }
-/* skill tab link */
+
+/* ------------------- Skill Grid--------------------- */
 .skill-tab-grid-container {
   max-width: 475px;
   margin: 0;
@@ -191,9 +308,10 @@ nav ul li a:hover {
   border: 1px solid rgb(16, 16, 16);
   border-radius: 12px;
   transition: border 0.2s;
+  background: linear-gradient(burlywood, rgb(233, 169, 85));
 }
 .skill-tab-grid-container div:hover {
-  border: 1px solid #77ae0c;
+  border: 1px solid white;
 }
 .skill-tab-grid-container div {
   align-items: center;
@@ -205,7 +323,7 @@ nav ul li a:hover {
   font-family: "Inconsolata", monospace;
   visibility: hidden;
   width: 100px;
-  background-color: white;
+  background: white;
   color: black;
   text-align: center;
   padding: 5px 0;
@@ -231,7 +349,8 @@ nav ul li a:hover {
   border-style: solid;
   border-color: white transparent transparent transparent;
 }
-/* experience tab link */
+
+/* ------------------- Experience Grid -------------------- */
 .experience-tab-grid-container {
   max-width: 575px;
   margin: 0;
@@ -240,19 +359,20 @@ nav ul li a:hover {
   grid-template-rows: repeat(2, 150px);
   gap: 15px;
 }
-.experience-tab-grid-container > div {
+.experience-tab-grid-container div {
   background: rgb(39, 27, 27);
   text-align: left;
   padding: 20px;
   border: 1px solid rgb(16, 16, 16);
   border-radius: 12px;
   transition: border 0.2s;
+  background: linear-gradient(burlywood, rgb(233, 169, 85));
 }
 .experience-tab-grid-container div:hover {
-  border: 1px solid #77ae0c;
+  border: 1px solid white;
 }
 .experience-tab-grid-container div span {
-  color: #77ae0c;
+  color: black;
   font-family: "Inconsolata", monospace;
   font-size: 0.9rem;
   margin-bottom: 5px;
@@ -269,7 +389,7 @@ nav ul li a:hover {
   font-size: 1rem;
 }
 
-/* education  tab link */
+/* ------------------- Education Grid -------------------- */
 .education-tab-grid-container {
   max-width: 575px;
   max-height: 315px;
@@ -300,12 +420,13 @@ nav ul li a:hover {
   border: 1px solid rgb(16, 16, 16);
   border-radius: 12px;
   transition: border 0.2s;
+  background: linear-gradient(burlywood, rgb(233, 169, 85));
 }
 .education-tab-grid-container div:hover {
-  border: 1px solid #77ae0c;
+  border: 1px solid white;
 }
 .education-tab-grid-container div span {
-  color: #77ae0c;
+  color: black;
   font-family: "Inconsolata", monospace;
   font-size: 0.9rem;
   margin-bottom: 5px;
@@ -321,14 +442,16 @@ nav ul li a:hover {
   margin-top: 15px;
   font-size: 1rem;
 }
-
-/* ---------------Services-------------- */
+/* ==================================== */
+/* Service Page */
+/* ==================================== */
 .services-text {
   font-size: 60px;
   font-weight: 700;
+  color: #77ae0c;
 }
 #services {
-  padding: 30px 0;
+  padding: 55px 0;
   margin-left: 10%;
   margin-right: 10%;
 }
@@ -342,10 +465,11 @@ nav ul li a:hover {
 
 .services-list div {
   background: rgb(39, 27, 27);
-  padding: 40px;
+  padding: 30px;
   font-size: 13px;
   font-weight: 300;
   border-radius: 10px;
+  box-shadow: 0px 0px 10px 7px rgba(12, 55, 119, 0.5);
   transition: background 0.5s, transform 0.5s;
 }
 .services-list div a {
@@ -354,7 +478,8 @@ nav ul li a:hover {
 }
 .services-list div:hover {
   transform: translateY(-10px);
-  background: burlywood;
+  background: linear-gradient(burlywood, rgb(233, 169, 85));
+  box-shadow: none;
 }
 .services-list div img {
   margin-bottom: 30px;
@@ -366,44 +491,53 @@ nav ul li a:hover {
 }
 .services-list div p {
   font-family: "Inconsolata", monospace;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 400;
 }
-/* -----------------My-Work-------------- */
-.my-work-text {
-  font-size: 60px;
-  font-weight: 700;
-}
+/* ==================================== */
+/* My Work Page */
+/* ==================================== */
 #my-work {
+  padding: 4rem 0;
   padding: 50px 0;
   margin: 10%;
 }
-
-.my-work-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  /* grid-template-rows: 250px; */
-  gap: 40px;
-  margin-top: 50px;
+.my-work-text {
+  font-size: 3.75rem;
+  font-weight: 700;
+  color: #77ae0c;
 }
-
-.work {
-  border-radius: 10px;
+#my-work .tranding-slider {
+  height: 40rem;
+  padding: 2rem 0;
   position: relative;
-  overflow: hidden;
 }
-.work img {
-  width: 100%;
-  border-radius: 10px;
-  display: block;
-  transition: transform 0.5s;
+.tranding-slide {
+  width: 35rem;
+  height: 25rem;
+  position: relative;
 }
-.layer {
-  width: 100%;
-  height: 0%;
-  background: linear-gradient(rgba(137, 134, 134, 0.4), burlywood);
-  border-radius: 10px;
+.tranding-slide .tranding-slide-img img {
+  width: 35rem;
+  height: 25rem;
+  border-radius: 2rem;
+  object-fit: cover;
+  box-shadow: 0px 8px 24px rgba(1, 8, 31, 0.9);
+  border: solid 3px #77ae0c;
+}
+.tranding-slide .tranding-slide-content {
   position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.tranding-slide-content .tranding-slide-content-bottom {
+  position: absolute;
+  width: 35rem;
+  height: 0%;
+  background: linear-gradient(rgb(248, 233, 215), rgba(137, 134, 134, 0.1));
+  border-radius: 2rem;
   left: 0;
   bottom: 0;
   overflow: hidden;
@@ -413,17 +547,21 @@ nav ul li a:hover {
   flex-direction: column;
   padding: 0 40px;
   text-align: center;
-  transition: height 0.5s;
+  transition: height 0.3s;
 }
-.layer h3 {
-  font-weight: 500px;
+.tranding-slide-content .tranding-slide-content-bottom h3 {
+  font-size: 1.55rem;
+  font-weight: 600px;
   margin-bottom: 20px;
+  color: black;
 }
-.layer p {
-  font-size: 14px;
+.tranding-slide-content .tranding-slide-content-bottom p {
+  font-size: 16px;
   font-family: "Inconsolata", monospace;
+  color: black;
+  font-weight: 700;
 }
-.layer a {
+.tranding-slide-content .tranding-slide-content-bottom a {
   margin-top: 20px;
   color: rgb(16, 16, 16);
   text-decoration: none;
@@ -435,30 +573,123 @@ nav ul li a:hover {
   border-radius: 50%;
   text-align: center;
 }
-.work:hover img {
-  transform: scale(1.1);
-}
-.work:hover .layer {
+.tranding-slide:hover .tranding-slide-content-bottom {
   height: 100%;
 }
-.btn {
-  font-family: "Inconsolata", monospace;
-  font-size: 15px;
-  display: block;
-  margin: 50px auto;
-  width: fit-content;
-  border: 1px solid rgb(247, 234, 234);
-  padding: 14px 50px;
-  border-radius: 6px;
-  text-decoration: none;
-  color: white;
-  transition: background 0.3s;
-}
-.btn:hover {
-  background: linear-gradient(burlywood, rgb(233, 169, 85));
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  display: none;
 }
 
-/* --------------Contact Me-------------- */
+.tranding-slider-control {
+  position: relative;
+  bottom: 6.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tranding-slider-control .swiper-button-next {
+  left: 58% !important;
+  transform: translateX(-58%) !important;
+}
+.tranding-slider-control .swiper-button-prev {
+  left: 42% !important;
+  transform: translateX(-42%) !important;
+}
+.tranding-slider-control .slider-arrow {
+  background: linear-gradient(burlywood, rgb(233, 169, 85));
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  left: 42%;
+  transform: translateX(-42%);
+  filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.7));
+}
+.tranding-slider-control .slider-arrow:hover {
+  box-shadow: 0px 0px 0px 5px rgba(119, 174, 12, 0.5);
+}
+.tranding-slider-control .slider-arrow ion-icon {
+  font-size: 1.7rem;
+  color: black;
+}
+
+.tranding-slider-control .slider-arrow::after {
+  content: "";
+}
+
+.tranding-slider-control .swiper-pagination {
+  position: relative;
+  width: 10rem;
+  bottom: 0.4rem;
+}
+.tranding-slider-control .swiper-pagination .swiper-pagination-bullet {
+  filter: drop-shadow(0px 8px 24px rgba(198, 207, 237, 0.5));
+  background: white;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.tranding-slider-control .swiper-pagination .swiper-pagination-bullet-active {
+  background: burlywood;
+  width: 11px;
+  height: 8px;
+  border-radius: 35%;
+  transition: 0.4s ease;
+}
+/* @media (max-width: 1440px) {
+  #tranding {
+    padding: 7rem 0;
+  }
+}
+
+@media (max-width: 500px) {
+  #tranding .tranding-slider {
+    height: 45rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .tranding-slide {
+    width: 28rem !important;
+    height: 36rem !important;
+  }
+  .tranding-slide .tranding-slide-img img {
+    width: 28rem !important;
+    height: 36rem !important;
+  }
+}
+
+@media (max-width: 990px) {
+  .tranding-slider-control .swiper-button-next {
+    left: 70% !important;
+    transform: translateX(-70%) !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .tranding-slider-control .swiper-button-next {
+    left: 80% !important;
+    transform: translateX(-80%) !important;
+  }
+}
+
+@media (max-width: 990px) {
+  .tranding-slider-control .swiper-button-prev {
+    left: 30% !important;
+    transform: translateX(-30%) !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .tranding-slider-control .swiper-button-prev {
+    left: 20% !important;
+    transform: translateX(-20%) !important;
+  }
+} */
+
+/* ==================================== */
+/* Contact Me Page */
+/* ==================================== */
 .row {
   margin-left: 10%;
   display: flex;
@@ -469,6 +700,7 @@ nav ul li a:hover {
 .contact-text {
   font-size: 60px;
   font-weight: 700;
+  color: #77ae0c;
 }
 .contact-right {
   flex-basis: 60%;
@@ -496,6 +728,22 @@ nav ul li a:hover {
 .social-icons a:hover {
   color: burlywood;
   transform: translateY(-5px);
+}
+.btn {
+  font-family: "Inconsolata", monospace;
+  font-size: 15px;
+  display: block;
+  margin: 50px auto;
+  width: fit-content;
+  border: 1px solid rgb(247, 234, 234);
+  padding: 14px 50px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: white;
+  transition: background 0.3s;
+}
+.btn:hover {
+  background: linear-gradient(burlywood, rgb(233, 169, 85));
 }
 .btn.btn2 {
   display: inline-block;
@@ -527,53 +775,67 @@ form .btn2 {
   cursor: pointer;
   font-family: "Inconsolata", monospace;
 }
-.copyright {
-  width: 100%;
-  text-align: center;
-  padding: 25px 0;
-  background: rgb(16, 16, 16);
-  font-family: "Inconsolata", monospace;
-  font-weight: 300;
-  margin-top: 20px;
-}
 #sent {
   color: #77ae0c;
   margin-top: -40px;
   display: block;
   font-family: "Inconsolata", monospace;
 }
-
-/* Making website text non-selectabale */
-
-.unselectable {
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+/* ------------------- Footer -------------------- */
+.copyright {
+  width: 100%;
+  text-align: center;
+  padding: 25px 0px;
+  background: rgb(40, 39, 39);
+  font-family: "Inconsolata", monospace;
+  font-weight: 300;
+  margin-top: 20px;
+  margin-bottom: 0 !important;
 }
-
-/* Making website text selection color different */
-
-::-moz-selection {
-  /* Code for Firefox */
-  color: white;
-  background: #77ae0c;
+/* ==================================== */
+/* Back TO Top Button */
+/* ==================================== */
+.to-top {
+  background: linear-gradient(burlywood, rgb(233, 169, 85));
+  position: fixed;
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 1.5rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  color: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s;
+  z-index: 999;
 }
-
-::selection {
-  color: white;
-  background: #77ae0c;
+.to-top.active {
+  bottom: 3rem;
+  opacity: 1;
+  pointer-events: auto;
 }
+/* ==================================== */
+/* Burger Menu */
+/* ==================================== */
 #cross {
   display: none;
 }
 #bar {
   display: none;
 }
-/* screen optimization css */
-
-@media only screen and (max-width: 600px) {
-  #header_image {
-    background-image: url(images/My_image_phone.png);
+/* ==================================== */
+/* Screen Optimization */
+/* ==================================== */
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+  /* ------------------- Navigation -------------------- */
+  .navigation {
+    padding: 3px, 16px, 2px;
+    height: 50px;
+    z-index: 9999;
   }
   .header_text {
     margin-top: 100%;
@@ -613,8 +875,8 @@ form .btn2 {
     height: 100vh;
     padding-top: 50px;
     z-index: 2;
-    /* opacity: 0.7; */
-    transition: right 0.5s;
+    opacity: 0.9;
+    transition: right 0.2s ease-in-out;
   }
   nav ul li {
     display: block;
@@ -625,23 +887,92 @@ form .btn2 {
   }
   #cross {
     position: absolute;
-    top: 25px;
+    top: 10px;
     left: 25px;
     cursor: pointer;
   }
   #bar {
     position: absolute;
-    top: 25px;
+    top: 10px;
     right: 25px;
     cursor: pointer;
+    color: white;
   }
-
-  .about-col-1,
-  .about-col-2 {
-    flex-basis: 90%;
+  /* ------------------- Home Page -------------------- */
+  .home-wrapper {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 70%;
   }
+  .profile-image {
+    margin-left: -1% !important;
+    margin-top: -122%;
+    text-align: center;
+  }
+  .profile-image img {
+    height: 330px;
+    width: 300px;
+  }
+  .header_text {
+    margin-left: -3%;
+  }
+  .header_text h1 {
+    font-size: 2rem;
+  }
+  #name_tag {
+    font-size: 2.5rem;
+  }
+  .wrapper {
+    display: flex;
+    margin-left: 22.5%;
+    margin-top: 1%;
+  }
+  .wrapper .typed-text {
+    height: 1rem;
+    line-height: 1rem;
+    width: 180px;
+  }
+  .typed-text li {
+    font-size: 1rem;
+    top: 0;
+    left: 20% !important;
+    text-align: left;
+  }
+  @keyframes slide {
+    100% {
+      top: -80px;
+    }
+  }
+  .typed-text li::after {
+    content: "";
+    position: absolute;
+    /* left: 20%; */
+    animation: typing 4s infinite;
+  }
+  @keyframes typing {
+    40%,
+    60% {
+      left: calc(90% + 1rem);
+    }
+    90% {
+      left: 0;
+    }
+  }
+  /* ------------------- About Page -------------------- */
   .about-col-1 {
     margin-bottom: 30px;
+    flex-basis: 90%;
+  }
+  .about-col-1 img {
+    margin-bottom: -1%;
+  }
+  .about-col-2 {
+    flex-basis: 90%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   .about-text {
     font-size: 40px;
@@ -649,6 +980,14 @@ form .btn2 {
   .about-detail-text {
     font-size: 16px;
     margin-top: 10px;
+    margin-right: 5%;
+    font-weight: 500;
+    color: burlywood;
+  }
+  .about-tabs {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   .tab-links {
     font-size: 16px;
@@ -660,6 +999,7 @@ form .btn2 {
     grid-template-columns: repeat(2, 100px);
     grid-template-rows: repeat(4, 100px);
     overflow-y: auto;
+    margin-left: 10%;
   }
   .skill-tab-grid-container > div {
     padding: 20px;
@@ -684,6 +1024,7 @@ form .btn2 {
     grid-template-columns: 220px;
     grid-template-rows: repeat(4, 120px);
     overflow-y: auto;
+    margin-left: 10%;
   }
   .experience-tab-grid-container div span {
     font-size: 12px;
@@ -709,6 +1050,7 @@ form .btn2 {
     max-height: 255px;
     grid-template-columns: 220px;
     grid-template-rows: repeat(12, 120px);
+    margin-left: 10%;
   }
   .education-tab-grid-container div span {
     font-size: 11px;
@@ -719,14 +1061,96 @@ form .btn2 {
   .education-tab-grid-container div li {
     font-size: 12px;
   }
+  /* ------------------- Service Page -------------------- */
+  .service-container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
   .services-text {
     font-size: 40px;
+  }
+  .services-list {
+    text-align: left;
+  }
+  /* ------------------- My-Work Page -------------------- */
+  .container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   .my-work-text {
     font-size: 40px;
   }
+  #my-work .tranding-slider {
+    height: 35rem;
+    padding: 2rem 0;
+  }
+  #tranding {
+    padding: 7rem 0;
+  }
+  .tranding-slide {
+    width: 17rem;
+    height: 25rem;
+  }
+  .tranding-slide .tranding-slide-img img {
+    width: 17rem;
+    height: 25rem !important;
+    border-radius: 2rem;
+    object-fit: cover;
+    box-shadow: 0px 8px 24px rgba(1, 8, 31, 0.9);
+    border: solid 3px #77ae0c;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom {
+    width: 17rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom h3 {
+    font-size: 1.2rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom p {
+    font-size: 0.9rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom a {
+    margin-top: 40px;
+    font-size: 1rem;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+  }
+  .tranding-slider-control {
+    margin-top: 15%;
+  }
+  .tranding-slider-control .slider-arrow ion-icon {
+    font-size: 0.9rem;
+  }
+  .tranding-slider-control .swiper-button-next {
+    left: 70% !important;
+    transform: translateX(-70%) !important;
+  }
+  .tranding-slider-control .swiper-button-prev {
+    left: 30% !important;
+    transform: translateX(-30%) !important;
+  }
+  .tranding-slider-control .slider-arrow {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .tranding-slider-control .swiper-pagination {
+    width: 6rem;
+    bottom: 0.9rem;
+  }
+  .tranding-slider-control .swiper-pagination .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+  }
+  .tranding-slider-control .swiper-pagination .swiper-pagination-bullet-active {
+    width: 9px;
+    height: 6px;
+  }
+  /* ------------------- Contact Page -------------------- */
   .contact-text {
     font-size: 40px;
+    margin-top: 10%;
   }
   .row {
     display: inline;
@@ -736,8 +1160,1510 @@ form .btn2 {
     margin-left: 10%;
     margin-right: 10%;
   }
+  /* ------------------- Footer -------------------- */
   .copyright {
     font-size: 14px;
     margin-bottom: 20px;
+  }
+  /* ------------------- Back-To-Top-Button -------------------- */
+  .to-top {
+    height: 1.5rem;
+    width: 1.5rem;
+    font-size: 0.9rem;
+    right: 0.8rem;
+    bottom: 1rem;
+  }
+  .to-top.active {
+    bottom: 5rem;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 768px) and (orientation: landscape) {
+  /* ------------------- Navigation -------------------- */
+  .navigation {
+    height: 50px;
+    padding: 0px, 16px, 2px;
+  }
+  .right {
+    font-size: 2.5rem !important;
+    margin-left: 10%;
+  }
+  .left {
+    margin-right: 5%;
+  }
+  nav ul li {
+    margin: 10px 20px;
+    font-size: 0.7rem !important;
+  }
+  /* ------------------- Home Page -------------------- */
+  .home-wrapper {
+    display: inline-block;
+  }
+  .profile-image {
+    margin-left: -1% !important;
+    margin-top: -80%;
+    text-align: center;
+    margin-bottom: 30%;
+  }
+  .profile-image img {
+    height: 330px !important;
+    width: 300px !important;
+  }
+  .header_text {
+    margin-left: 35%;
+    margin-top: 60%;
+  }
+  .header_text h1 {
+    font-size: 3rem;
+  }
+  #name_tag {
+    font-size: 3.7rem;
+  }
+  .wrapper {
+    display: flex;
+    margin-left: 0.5%;
+    margin-top: 0%;
+  }
+  .wrapper .typed-text {
+    height: 1.5rem;
+    line-height: 1.5rem;
+    width: 300px;
+  }
+  .typed-text li {
+    font-size: 1.5rem;
+    top: 0;
+    text-align: left;
+  }
+  @keyframes slide {
+    100% {
+      top: -120px;
+    }
+  }
+  .typed-text li::after {
+    content: "";
+    position: absolute;
+    animation: typing 4s infinite;
+  }
+  @keyframes typing {
+    40%,
+    60% {
+      left: calc(75% + 1.5rem);
+    }
+    75% {
+      left: 0;
+    }
+  }
+  /* ------------------- About Page -------------------- */
+  .about-col-1 {
+    flex-basis: 50%;
+    position: relative;
+    margin-left: 20%;
+  }
+  .about-col-1 img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    margin-bottom: -1%;
+  }
+  .about-col-2 {
+    margin-left: 3% !important;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .about-text {
+    margin-top: 2%;
+  }
+  .about-detail-text {
+    margin-right: 0% !important;
+    margin-left: 0% !important;
+    text-wrap: none;
+    line-height: 2rem;
+    display: flex;
+  }
+  .about-tabs {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .tab-links {
+    font-size: 20px;
+    margin-right: 35px !important;
+    padding: 0 30px;
+  }
+  .tab-links::after {
+    left: 30px;
+  }
+  .skill-tab-grid-container {
+    max-width: 395px;
+    max-height: 175px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 80px);
+    margin-left: 9%;
+  }
+  .skill-tab-grid-container > div {
+    padding: 20px;
+  }
+  .skill-tab-grid-container div:hover .tootip {
+    visibility: hidden;
+  }
+  .skill-tab-grid-container img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .experience-tab-grid-container {
+    max-width: 395px;
+    max-height: 215px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 100px);
+    margin-left: 9%;
+  }
+  .experience-tab-grid-container > div {
+    padding: 10px;
+    text-align: left;
+  }
+  .experience-tab-grid-container div span {
+    font-size: 10px;
+  }
+  .experience-tab-grid-container div h5 {
+    font-size: 14px;
+  }
+  .experience-tab-grid-container div li {
+    font-size: 10px;
+  }
+
+  .education-tab-grid-container {
+    max-width: 395px;
+    max-height: 215px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 100px);
+    margin-left: 10%;
+  }
+  .education-tab-grid-container div {
+    padding: 10px;
+  }
+  .education-tab-grid-container div span {
+    font-size: 10px;
+  }
+  .education-tab-grid-container div h5 {
+    font-size: 12px;
+  }
+  .education-tab-grid-container div li {
+    font-size: 9px;
+  }
+  .education-tab-grid-container::-webkit-scrollbar {
+    width: 5px;
+  }
+  .education-tab-grid-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .education-tab-grid-container::-webkit-scrollbar-thumb {
+    background: #77ae0c;
+    border-radius: 2.5px;
+  }
+  .education-tab-grid-container::-webkit-scrollbar-thumb:hover {
+    background: #505644;
+  }
+  /* ------------------- Service Page -------------------- */
+  .service-container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20%;
+  }
+  .services-text {
+    font-size: 50px;
+  }
+  .services-list {
+    text-align: left;
+  }
+  .services-list h2 {
+    font-size: 1.2rem !important;
+  }
+  .services-list p {
+    font-size: 0.8rem !important;
+  }
+  /* ------------------- My-Work Page -------------------- */
+  #my-work {
+    margin-top: 20%;
+  }
+  .container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .my-work-text {
+    font-size: 55px;
+    margin-bottom: 2%;
+  }
+  #my-work .tranding-slider {
+    height: 35em;
+    padding: 2rem 0;
+  }
+  #tranding {
+    padding: 7rem 0;
+  }
+  .tranding-slide {
+    width: 30rem;
+    height: 22rem;
+  }
+  .tranding-slide .tranding-slide-img img {
+    width: 30rem;
+    height: 22rem !important;
+    border-radius: 2rem;
+    object-fit: cover;
+    box-shadow: 0px 8px 24px rgba(1, 8, 31, 0.9);
+    border: solid 3px #77ae0c;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom {
+    width: 30rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom h3 {
+    font-size: 1.2rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom p {
+    font-size: 0.9rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom a {
+    margin-top: 40px;
+    font-size: 1rem;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+  }
+  .tranding-slider-control .slider-arrow ion-icon {
+    font-size: 0.9rem;
+  }
+  .tranding-slider-control .swiper-button-next {
+    left: 60% !important;
+    transform: translateX(-70%) !important;
+  }
+  .tranding-slider-control .swiper-button-prev {
+    left: 40% !important;
+    transform: translateX(-20%) !important;
+  }
+  .tranding-slider-control .slider-arrow {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .tranding-slider-control .swiper-pagination {
+    width: 6rem;
+    bottom: 0.9rem;
+  }
+  .tranding-slider-control .swiper-pagination .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+  }
+  .tranding-slider-control .swiper-pagination .swiper-pagination-bullet-active {
+    width: 9px;
+    height: 6px;
+  }
+  /* ------------------- Contact Page -------------------- */
+  .row {
+    margin-left: 5%;
+  }
+  .contact-text {
+    font-size: 40px;
+    margin-top: 2%;
+  }
+  .contact-left p {
+    font-size: 0.9rem;
+  }
+  .contact-left p i {
+    font-size: 1rem;
+  }
+  .social-icons {
+    margin-top: 30px;
+  }
+  .social-icons a {
+    font-size: 1rem;
+    margin-right: 15px;
+  }
+  /* ------------------- Footer -------------------- */
+  .copyright {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  form .btn2 {
+    padding: 12px 44px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: "Inconsolata", monospace;
+  }
+  /* ------------------- Back-To-Top-Button -------------------- */
+  .to-top {
+    height: 1.7rem;
+    width: 1.7rem;
+    font-size: 1rem;
+    right: 0.8rem;
+    bottom: 1rem;
+  }
+  .to-top.active {
+    bottom: 5rem;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  /* ------------------- Navigation -------------------- */
+  .navigation {
+    height: 50px;
+    padding: 0px, 16px, 2px;
+  }
+  .right {
+    font-size: 2.5rem;
+    margin-left: 5%;
+  }
+  .left {
+    margin-right: 5%;
+  }
+  nav ul li {
+    margin: 10px 20px;
+    font-size: 0.9rem;
+  }
+  /* ------------------- Home Page -------------------- */
+  .home-wrapper {
+    display: inline-block;
+  }
+  .profile-image {
+    margin-left: -1% !important;
+    margin-top: -80%;
+    text-align: center;
+    margin-bottom: 30%;
+  }
+  .profile-image img {
+    height: 440px;
+    width: 400px;
+  }
+  .header_text {
+    margin-left: 35%;
+    margin-top: 60%;
+  }
+  .header_text h1 {
+    font-size: 3rem;
+  }
+  #name_tag {
+    font-size: 3.7rem;
+  }
+  .wrapper {
+    display: flex;
+    margin-left: 0.5%;
+    margin-top: 0%;
+  }
+  .wrapper .typed-text {
+    height: 1.5rem;
+    line-height: 1.5rem;
+    width: 300px;
+  }
+  .typed-text li {
+    font-size: 1.5rem;
+    top: 0;
+    text-align: left;
+  }
+  @keyframes slide {
+    100% {
+      top: -120px;
+    }
+  }
+  .typed-text li::after {
+    content: "";
+    position: absolute;
+    animation: typing 4s infinite;
+  }
+  @keyframes typing {
+    40%,
+    60% {
+      left: calc(75% + 1.5rem);
+    }
+    75% {
+      left: 0;
+    }
+  }
+  /* ------------------- About Page -------------------- */
+  .about-col-1 {
+    flex-basis: 50%;
+    position: relative;
+    margin-left: 20%;
+  }
+  .about-col-1 img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    margin-bottom: -1%;
+  }
+  .about-col-2 {
+    margin-left: 8%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .about-text {
+    margin-top: 2%;
+  }
+  .about-detail-text {
+    margin-right: 0% !important;
+    margin-left: 0% !important;
+    text-wrap: none;
+    line-height: 2rem;
+    display: flex;
+  }
+  .about-tabs {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .tab-links {
+    font-size: 20px;
+    margin-right: 30px;
+    padding: 0 30px;
+  }
+  .tab-links::after {
+    left: 30px;
+  }
+  .skill-tab-grid-container {
+    max-width: 395px;
+    max-height: 175px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 80px);
+    margin-left: 9%;
+  }
+  .skill-tab-grid-container > div {
+    padding: 20px;
+  }
+  .skill-tab-grid-container div:hover .tootip {
+    visibility: hidden;
+  }
+  .skill-tab-grid-container img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .experience-tab-grid-container {
+    max-width: 395px;
+    max-height: 215px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 100px);
+    margin-left: 9%;
+  }
+  .experience-tab-grid-container > div {
+    padding: 10px;
+    text-align: left;
+  }
+  .experience-tab-grid-container div span {
+    font-size: 10px;
+  }
+  .experience-tab-grid-container div h5 {
+    font-size: 14px;
+  }
+  .experience-tab-grid-container div li {
+    font-size: 10px;
+  }
+
+  .education-tab-grid-container {
+    max-width: 395px;
+    max-height: 215px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 100px);
+    margin-left: 10%;
+  }
+  .education-tab-grid-container div {
+    padding: 10px;
+  }
+  .education-tab-grid-container div span {
+    font-size: 10px;
+  }
+  .education-tab-grid-container div h5 {
+    font-size: 12px;
+  }
+  .education-tab-grid-container div li {
+    font-size: 9px;
+  }
+  .education-tab-grid-container::-webkit-scrollbar {
+    width: 5px;
+  }
+  .education-tab-grid-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .education-tab-grid-container::-webkit-scrollbar-thumb {
+    background: #77ae0c;
+    border-radius: 2.5px;
+  }
+  .education-tab-grid-container::-webkit-scrollbar-thumb:hover {
+    background: #505644;
+  }
+  /* ------------------- Service Page -------------------- */
+  .service-container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20%;
+  }
+  .services-text {
+    font-size: 50px;
+  }
+  .services-list {
+    text-align: left;
+  }
+  /* ------------------- My-Work Page -------------------- */
+  #my-work {
+    margin-top: 20%;
+  }
+  .container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .my-work-text {
+    font-size: 55px;
+    margin-bottom: 2%;
+  }
+  #my-work .tranding-slider {
+    height: 35em;
+    padding: 2rem 0;
+  }
+  #tranding {
+    padding: 7rem 0;
+  }
+  .tranding-slide {
+    width: 30rem;
+    height: 22rem;
+  }
+  .tranding-slide .tranding-slide-img img {
+    width: 30rem;
+    height: 22rem !important;
+    border-radius: 2rem;
+    object-fit: cover;
+    box-shadow: 0px 8px 24px rgba(1, 8, 31, 0.9);
+    border: solid 3px #77ae0c;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom {
+    width: 30rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom h3 {
+    font-size: 1.2rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom p {
+    font-size: 0.9rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom a {
+    margin-top: 40px;
+    font-size: 1rem;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+  }
+  .tranding-slider-control .slider-arrow ion-icon {
+    font-size: 0.9rem;
+  }
+  .tranding-slider-control .swiper-button-next {
+    left: 60% !important;
+    transform: translateX(-70%) !important;
+  }
+  .tranding-slider-control .swiper-button-prev {
+    left: 40% !important;
+    transform: translateX(-20%) !important;
+  }
+  .tranding-slider-control .slider-arrow {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .tranding-slider-control .swiper-pagination {
+    width: 6rem;
+    bottom: 0.9rem;
+  }
+  .tranding-slider-control .swiper-pagination .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+  }
+  .tranding-slider-control .swiper-pagination .swiper-pagination-bullet-active {
+    width: 9px;
+    height: 6px;
+  }
+  /* ------------------- Contact Page -------------------- */
+  .row {
+    margin-left: 5%;
+  }
+  .contact-text {
+    font-size: 40px;
+    margin-top: 2%;
+  }
+  .contact-left p {
+    font-size: 0.9rem;
+  }
+  .contact-left p i {
+    font-size: 1rem;
+  }
+  .social-icons {
+    margin-top: 30px;
+  }
+  .social-icons a {
+    font-size: 1rem;
+    margin-right: 15px;
+  }
+  /* ------------------- Footer -------------------- */
+  .copyright {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  form .btn2 {
+    padding: 12px 44px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: "Inconsolata", monospace;
+  }
+  /* ------------------- Back-To-Top-Button -------------------- */
+  .to-top {
+    height: 1.7rem;
+    width: 1.7rem;
+    font-size: 1rem;
+    right: 0.8rem;
+    bottom: 1rem;
+  }
+  .to-top.active {
+    bottom: 5rem;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  /* ------------------- Navigation -------------------- */
+  .navigation {
+    height: 50px;
+    padding: 0px, 16px, 2px;
+  }
+  .right {
+    font-size: 2.5rem;
+    margin-left: 5%;
+  }
+  .left {
+    margin-right: 5%;
+  }
+  nav ul li {
+    margin: 10px 20px;
+    font-size: 0.9rem;
+  }
+  /* ------------------- Home Page -------------------- */
+  .home-wrapper {
+    display: inline-block;
+  }
+  .profile-image {
+    margin-left: -1% !important;
+    margin-top: -80%;
+    text-align: center;
+    margin-bottom: 45%;
+  }
+  .profile-image img {
+    height: 440px;
+    width: 400px;
+  }
+  .header_text {
+    margin-left: 35%;
+    margin-top: 60%;
+  }
+  .header_text h1 {
+    font-size: 3.3rem;
+  }
+  #name_tag {
+    font-size: 4.2rem;
+  }
+  .wrapper {
+    display: flex;
+    margin-left: 0.5%;
+    margin-top: 1%;
+  }
+  .wrapper .typed-text {
+    height: 1.7rem;
+    line-height: 1.7rem;
+    width: 300px;
+  }
+  .typed-text li {
+    font-size: 1.7rem;
+    top: 0;
+    text-align: left;
+  }
+  @keyframes slide {
+    100% {
+      top: -137.5px;
+    }
+  }
+  .typed-text li::after {
+    content: "";
+    position: absolute;
+    animation: typing 4s infinite;
+  }
+  @keyframes typing {
+    40%,
+    60% {
+      left: calc(75% + 1.7rem);
+    }
+    75% {
+      left: 0;
+    }
+  }
+  /* ------------------- About Page -------------------- */
+  #my-work {
+    margin-top: 30%;
+  }
+  .about-col-1 {
+    flex-basis: 50%;
+    position: relative;
+    margin-left: 20%;
+  }
+  .about-col-1 img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    margin-bottom: -1%;
+  }
+  .about-col-2 {
+    margin-left: 11%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .about-text {
+    margin-top: 2%;
+  }
+  .about-detail-text {
+    margin-right: 0% !important;
+    margin-left: 0% !important;
+    text-wrap: none;
+    line-height: 2rem;
+    display: flex;
+  }
+  .about-tabs {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .tab-links {
+    font-size: 20px;
+    margin-right: 30px;
+    padding: 0 30px;
+  }
+  .tab-links::after {
+    left: 30px;
+  }
+
+  .experience-tab-grid-container > div {
+    padding: 16px;
+    text-align: left;
+  }
+  .experience-tab-grid-container div span {
+    font-size: 16px;
+  }
+  .experience-tab-grid-container div h5 {
+    font-size: 20px;
+  }
+  .experience-tab-grid-container div li {
+    font-size: 14px;
+  }
+
+  .education-tab-grid-container div {
+    padding: 16px;
+  }
+  .education-tab-grid-container div span {
+    font-size: 16px;
+  }
+  .education-tab-grid-container div h5 {
+    font-size: 20px;
+  }
+  .education-tab-grid-container div li {
+    font-size: 12px;
+  }
+  .education-tab-grid-container::-webkit-scrollbar {
+    width: 5px;
+  }
+  .education-tab-grid-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .education-tab-grid-container::-webkit-scrollbar-thumb {
+    background: #77ae0c;
+    border-radius: 2.5px;
+  }
+  .education-tab-grid-container::-webkit-scrollbar-thumb:hover {
+    background: #505644;
+  }
+  /* ------------------- Service Page -------------------- */
+  .service-container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20%;
+  }
+  .services-text {
+    font-size: 50px;
+  }
+  .services-list {
+    text-align: left;
+  }
+  /* ------------------- My-Work Page -------------------- */
+  #my-work {
+    margin-bottom: 45%;
+  }
+  .container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .my-work-text {
+    font-size: 55px;
+    margin-bottom: 2%;
+  }
+  #my-work .tranding-slider {
+    height: 35em;
+    padding: 2rem 0;
+  }
+  #tranding {
+    padding: 7rem 0;
+  }
+  .tranding-slide {
+    width: 30rem;
+    height: 22rem;
+  }
+  .tranding-slide .tranding-slide-img img {
+    width: 30rem;
+    height: 22rem !important;
+    border-radius: 2rem;
+    object-fit: cover;
+    box-shadow: 0px 8px 24px rgba(1, 8, 31, 0.9);
+    border: solid 3px #77ae0c;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom {
+    width: 30rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom h3 {
+    font-size: 1.2rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom p {
+    font-size: 0.9rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom a {
+    margin-top: 40px;
+    font-size: 1rem;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+  }
+  .tranding-slider-control .slider-arrow ion-icon {
+    font-size: 0.9rem;
+  }
+  .tranding-slider-control .swiper-button-next {
+    left: 60% !important;
+    transform: translateX(-70%) !important;
+  }
+  .tranding-slider-control .swiper-button-prev {
+    left: 40% !important;
+    transform: translateX(-20%) !important;
+  }
+  .tranding-slider-control .slider-arrow {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .tranding-slider-control .swiper-pagination {
+    width: 6rem;
+    bottom: 0.9rem;
+  }
+  .tranding-slider-control .swiper-pagination .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+  }
+  .tranding-slider-control .swiper-pagination .swiper-pagination-bullet-active {
+    width: 9px;
+    height: 6px;
+  }
+  /* ------------------- Contact Page -------------------- */
+  .row {
+    margin-left: 5%;
+  }
+  .contact-text {
+    font-size: 40px;
+    margin-top: 2%;
+  }
+  .contact-left p {
+    font-size: 0.9rem;
+  }
+  .contact-left p i {
+    font-size: 1rem;
+  }
+  .social-icons {
+    margin-top: 30px;
+  }
+  .social-icons a {
+    font-size: 1rem;
+    margin-right: 15px;
+  }
+  /* ------------------- Footer -------------------- */
+  .copyright {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  form .btn2 {
+    padding: 12px 44px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: "Inconsolata", monospace;
+  }
+  /* ------------------- Back-To-Top-Button -------------------- */
+  .to-top {
+    height: 1.7rem;
+    width: 1.7rem;
+    font-size: 1rem;
+    right: 0.8rem;
+    bottom: 1rem;
+  }
+  .to-top.active {
+    bottom: 5rem;
+  }
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+  /* ------------------- Navigation -------------------- */
+  .navigation {
+    height: 60px;
+    padding: 2px, 14px, 0px;
+    width: 100%;
+  }
+  .right {
+    font-size: 3rem;
+    margin-left: 8%;
+  }
+  .left {
+    margin-right: 8%;
+  }
+  nav ul li {
+    margin: 10px 20px;
+    font-size: 1.1rem;
+  }
+  /* ------------------- Home Page -------------------- */
+  .home-wrapper {
+    display: inline-block;
+  }
+  .profile-image {
+    margin-left: -1% !important;
+    margin-top: -80%;
+    text-align: center;
+    margin-bottom: 45%;
+  }
+  .profile-image img {
+    height: 550px;
+    width: 500px;
+  }
+  .header_text {
+    margin-left: 38%;
+    margin-top: 60%;
+  }
+  .header_text h1 {
+    font-size: 3.5rem;
+  }
+  #name_tag {
+    font-size: 4.5rem;
+  }
+  .wrapper {
+    display: flex;
+    margin-left: 0.5%;
+    margin-top: 1%;
+  }
+  .wrapper .typed-text {
+    height: 1.8rem;
+    line-height: 1.8rem;
+    width: 300px;
+  }
+  .typed-text li {
+    font-size: 1.8rem;
+    top: 0;
+    text-align: left;
+  }
+  @keyframes slide {
+    100% {
+      top: -145px;
+    }
+  }
+  .typed-text li::after {
+    content: "";
+    position: absolute;
+    animation: typing 4s infinite;
+  }
+  @keyframes typing {
+    40%,
+    60% {
+      left: calc(75% + 1.8em);
+    }
+    75% {
+      left: 0;
+    }
+  }
+  /* ------------------- About Page -------------------- */
+  #about {
+    margin-bottom: 30%;
+  }
+  .about-col-1 {
+    flex-basis: 50%;
+    position: relative;
+    margin-left: 20%;
+  }
+  .about-col-1 img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    margin-bottom: -0.5%;
+  }
+  .about-col-2 {
+    margin-left: 15%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .about-text {
+    margin-top: 2%;
+  }
+  .about-detail-text {
+    margin-right: 0% !important;
+    margin-left: 0% !important;
+    text-wrap: none;
+    line-height: 2rem;
+    display: flex;
+  }
+  .about-tabs {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .tab-links {
+    font-size: 20px;
+    margin-right: 30px;
+    padding: 0 30px;
+  }
+  .tab-links::after {
+    left: 30px;
+  }
+
+  .skill-tab-grid-container {
+    margin-left: 5%;
+  }
+  .experience-tab-grid-container > div {
+    padding: 16px;
+    text-align: left;
+  }
+  .experience-tab-grid-container div span {
+    font-size: 16px;
+  }
+  .experience-tab-grid-container div h5 {
+    font-size: 20px;
+  }
+  .experience-tab-grid-container div li {
+    font-size: 14px;
+  }
+
+  .education-tab-grid-container div {
+    padding: 16px;
+  }
+  .education-tab-grid-container div span {
+    font-size: 16px;
+  }
+  .education-tab-grid-container div h5 {
+    font-size: 20px;
+  }
+  .education-tab-grid-container div li {
+    font-size: 12px;
+  }
+  .education-tab-grid-container::-webkit-scrollbar {
+    width: 5px;
+  }
+  .education-tab-grid-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .education-tab-grid-container::-webkit-scrollbar-thumb {
+    background: #77ae0c;
+    border-radius: 2.5px;
+  }
+  .education-tab-grid-container::-webkit-scrollbar-thumb:hover {
+    background: #505644;
+  }
+  /* ------------------- Service Page -------------------- */
+  .service-container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 30%;
+  }
+  .services-list {
+    max-width: 660px;
+    max-height: 540px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 250px);
+    margin-left: 10%;
+  }
+  .services-text {
+    font-size: 50px;
+  }
+  .services-list {
+    text-align: left;
+  }
+  /* ------------------- My-Work Page -------------------- */
+  #my-work {
+    margin-bottom: 45%;
+  }
+  .container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .my-work-text {
+    font-size: 55px;
+    margin-bottom: 2%;
+  }
+  #my-work .tranding-slider {
+    height: 35em;
+    padding: 2rem 0;
+  }
+  #tranding {
+    padding: 7rem 0;
+  }
+  .tranding-slide {
+    width: 30rem;
+    height: 22rem;
+  }
+  .tranding-slide .tranding-slide-img img {
+    width: 30rem;
+    height: 22rem !important;
+    border-radius: 2rem;
+    object-fit: cover;
+    box-shadow: 0px 8px 24px rgba(1, 8, 31, 0.9);
+    border: solid 3px #77ae0c;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom {
+    width: 30rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom h3 {
+    font-size: 1.2rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom p {
+    font-size: 0.9rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom a {
+    margin-top: 40px;
+    font-size: 1rem;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+  }
+  .tranding-slider-control .slider-arrow ion-icon {
+    font-size: 0.9rem;
+  }
+  .tranding-slider-control .swiper-button-next {
+    left: 60% !important;
+    transform: translateX(-70%) !important;
+  }
+  .tranding-slider-control .swiper-button-prev {
+    left: 40% !important;
+    transform: translateX(-20%) !important;
+  }
+  .tranding-slider-control .slider-arrow {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .tranding-slider-control .swiper-pagination {
+    width: 6rem;
+    bottom: 0.9rem;
+  }
+  .tranding-slider-control .swiper-pagination .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+  }
+  .tranding-slider-control .swiper-pagination .swiper-pagination-bullet-active {
+    width: 9px;
+    height: 6px;
+  }
+  /* ------------------- Contact Page -------------------- */
+  .row {
+    margin-left: 5%;
+  }
+  .contact-text {
+    font-size: 40px;
+    margin-top: 2%;
+  }
+  .contact-left p {
+    font-size: 0.9rem;
+  }
+  .contact-left p i {
+    font-size: 1rem;
+  }
+  .social-icons {
+    margin-top: 30px;
+  }
+  .social-icons a {
+    font-size: 1rem;
+    margin-right: 15px;
+  }
+  /* ------------------- Footer -------------------- */
+  .copyright {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  form .btn2 {
+    padding: 12px 44px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: "Inconsolata", monospace;
+  }
+  /* ------------------- Back-To-Top-Button -------------------- */
+  .to-top {
+    height: 2rem;
+    width: 2rem;
+    font-size: 1.2rem;
+    right: 0.8rem;
+    bottom: 1rem;
+  }
+  .to-top.active {
+    bottom: 5rem;
+  }
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1439px) {
+  /* ------------------- Home Page -------------------- */
+  .profile-image {
+    margin-right: 10% !important;
+  }
+  .header_text {
+    margin-top: 5%;
+  }
+  .header_text h1 {
+    font-size: 4rem;
+  }
+  #name_tag {
+    font-size: 5rem;
+  }
+  .wrapper {
+    display: flex;
+    margin-left: 0.5%;
+    margin-top: 1%;
+  }
+  .wrapper .typed-text {
+    height: 2rem;
+    line-height: 2rem;
+    width: 300px;
+  }
+  .typed-text li {
+    font-size: 2rem;
+    top: 0;
+    text-align: left;
+  }
+  @keyframes slide {
+    100% {
+      top: -160px;
+    }
+  }
+  .typed-text li::after {
+    content: "";
+    position: absolute;
+    animation: typing 4s infinite;
+  }
+  @keyframes typing {
+    40%,
+    60% {
+      left: calc(90% + 2rem);
+    }
+    90% {
+      left: 0;
+    }
+  }
+  /* ------------------- About Page -------------------- */
+  #about {
+    margin-bottom: 20%;
+  }
+  .experience-tab-grid-container {
+    max-width: 475px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 100px);
+  }
+  .experience-tab-grid-container div {
+    padding: 1rem !important;
+  }
+  .experience-tab-grid-container h5 {
+    font-size: 1rem !important;
+  }
+  .experience-tab-grid-container li {
+    font-size: 0.7rem !important;
+  }
+  .education-tab-grid-container {
+    max-height: 215px;
+    max-width: 475px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 100px);
+    overflow-y: auto;
+  }
+  .education-tab-grid-container div {
+    padding: 0.8rem !important;
+  }
+  .education-tab-grid-container h5 {
+    font-size: 0.8rem !important;
+  }
+  .education-tab-grid-container li {
+    font-size: 0.5rem !important;
+    margin-top: 5px !important;
+  }
+  .education-tab-grid-container::-webkit-scrollbar {
+    width: 5px;
+  }
+  .education-tab-grid-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .education-tab-grid-container::-webkit-scrollbar-thumb {
+    background: #77ae0c;
+    border-radius: 2.5px;
+  }
+  .education-tab-grid-container::-webkit-scrollbar-thumb:hover {
+    background: #505644;
+  }
+  /* ------------------- Service Page -------------------- */
+  .service-container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40%;
+    margin-top: 10%;
+  }
+  .services-list {
+    max-width: 1320px;
+    grid-template-columns: repeat(290px, 1fr);
+    grid-template-rows: 200px;
+    gap: 40px;
+  }
+  .services-list div {
+    padding: 1rem;
+  }
+  .services-list div img {
+    margin-bottom: 1.5rem;
+  }
+  .services-list div h2 {
+    font-size: 1.5rem !important;
+  }
+  .services-list div p {
+    font-size: 0.7rem !important;
+  }
+
+  /* ------------------- My-Work Page -------------------- */
+  #my-work {
+    margin-bottom: 45%;
+  }
+  .container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .my-work-text {
+    font-size: 55px;
+    margin-bottom: 2%;
+    margin-top: 2%;
+  }
+  #my-work .tranding-slider {
+    height: 35em;
+    padding: 2rem 0;
+  }
+  #tranding {
+    padding: 7rem 0;
+  }
+  .tranding-slide {
+    width: 30rem;
+    height: 22rem;
+  }
+  .tranding-slide .tranding-slide-img img {
+    width: 30rem;
+    height: 22rem !important;
+    border-radius: 2rem;
+    object-fit: cover;
+    box-shadow: 0px 8px 24px rgba(1, 8, 31, 0.9);
+    border: solid 3px #77ae0c;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom {
+    width: 30rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom h3 {
+    font-size: 1.2rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom p {
+    font-size: 0.9rem;
+  }
+  .tranding-slide-content .tranding-slide-content-bottom a {
+    margin-top: 40px;
+    font-size: 1rem;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+  }
+  .tranding-slider-control .slider-arrow ion-icon {
+    font-size: 0.9rem;
+  }
+  .tranding-slider-control .swiper-button-next {
+    left: 60% !important;
+    transform: translateX(-70%) !important;
+  }
+  .tranding-slider-control .swiper-button-prev {
+    left: 40% !important;
+    transform: translateX(-20%) !important;
+  }
+  .tranding-slider-control .slider-arrow {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .tranding-slider-control .swiper-pagination {
+    width: 6rem;
+    bottom: 0.9rem;
+  }
+  .tranding-slider-control .swiper-pagination .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+  }
+  .tranding-slider-control .swiper-pagination .swiper-pagination-bullet-active {
+    width: 9px;
+    height: 6px;
+  }
+  /* ------------------- Contact Page -------------------- */
+  .row {
+    margin-left: 5%;
+  }
+  .contact-text {
+    font-size: 50px;
+    margin-top: 2%;
+  }
+  .contact-left p {
+    font-size: 0.9rem;
+  }
+  .contact-left p i {
+    font-size: 1rem;
+  }
+  .social-icons {
+    margin-top: 30px;
+  }
+  .social-icons a {
+    font-size: 1rem;
+    margin-right: 15px;
+  }
+  /* ------------------- Footer -------------------- */
+  .copyright {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  form .btn2 {
+    padding: 12px 44px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: "Inconsolata", monospace;
+  }
+  /* ------------------- Back-To-Top-Button -------------------- */
+  .to-top {
+    height: 2rem;
+    width: 2rem;
+    font-size: 1.2rem;
+    right: 0.8rem;
+    bottom: 1rem;
+  }
+  .to-top.active {
+    bottom: 5rem;
   }
 }

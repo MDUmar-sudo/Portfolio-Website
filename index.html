@@ -4,8 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/favicon.png" />
-    <title>UMAR</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="favicon_io/site.webmanifest" />
+    <title>Umar</title>
     <!-- Font "Ubuntu" -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,7 +44,11 @@
       href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap"
       rel="stylesheet"
     />
-
+    <!-- Style Sheets -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
     <link href="PortfolioSTYLE.css" rel="stylesheet" type="text/css" />
     <script
       src="https://kit.fontawesome.com/a02d140d7e.js"
@@ -37,45 +58,47 @@
   </head>
   <body>
     <header id="header">
-      <div id="header_image">
-        <div class="navigation">
-          <nav>
-            <div class="right unselectable">
-              <span class="name_logo">U</span>mar.
-            </div>
-            <div class="left unselectable">
-              <ul id="sidemenu">
-                <li><a href="#header" onclick="closemenu()">Home</a></li>
-                <li><a href="#about" onclick="closemenu()">About</a></li>
-                <li><a href="#services" onclick="closemenu()">Services</a></li>
-                <li><a href="#my-work" onclick="closemenu()">My Work</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <i
-                  class="fa-solid fa-xmark"
-                  id="cross"
-                  onclick="closemenu()"
-                ></i>
-              </ul>
-              <i class="fa-solid fa-bars" id="bar" onclick="openmenu()"></i>
-            </div>
-          </nav>
-        </div>
-        <div class="header_text unselectable">
-          <p class="p1">Software Developer</p>
-          <h1>Hello I'm</h1>
-          <h1 id="name_tag">Md Umar</h1>
-        </div>
-        <div>
-          <p class="p2 unselectable">
-            I excel at crafting elegant digital experiences and<br />
-            I am proficient in various programming languages and <br />
-            technologies.
-          </p>
-        </div>
+      <div class="navigation">
+        <nav>
+          <div class="right unselectable">
+            <span class="name_logo">U</span>mar.
+          </div>
+          <div class="left unselectable">
+            <ul id="sidemenu">
+              <li><a href="#" onclick="closemenu()">Home</a></li>
+              <li><a href="#about" onclick="closemenu()">About</a></li>
+              <li><a href="#services" onclick="closemenu()">Services</a></li>
+              <li><a href="#my-work" onclick="closemenu()">My Work</a></li>
+              <li><a href="#contact" onclick="closemenu()">Contact</a></li>
+              <i class="fa-solid fa-xmark" id="cross" onclick="closemenu()"></i>
+            </ul>
+            <i class="fa-solid fa-bars" id="bar" onclick="openmenu()"></i>
+          </div>
+        </nav>
       </div>
     </header>
-
     <main>
+      <!-- Home Page -->
+      <div id="home">
+        <div class="home-wrapper">
+          <div class="header_text unselectable">
+            <h1>Hello I'm</h1>
+            <h1 id="name_tag">Md Umar</h1>
+            <div class="wrapper">
+              <ul class="typed-text">
+                <li>Software Developer</li>
+                <li>Website Developer</li>
+                <li>App Developer</li>
+                <li>Freelance Coder</li>
+                <li>UI/UX Designer</li>
+              </ul>
+            </div>
+          </div>
+          <div class="profile-image unselectable">
+            <img src="images/My_image.png" />
+          </div>
+        </div>
+      </div>
       <!-- About Page -->
       <div id="about">
         <div class="about-container">
@@ -86,11 +109,13 @@
             <div class="about-col-2 unselectable">
               <h1 class="about-text">About Me</h1>
               <p class="about-detail-text">
-                Hey there,👋 I'm UMAR MCA grad who is passionate about Software
-                Development, UI/UX Design and Product Management. I'm a creative
-                and skilled Developer and maintaining responsive websites and
-                apps. Proficient in HTML, CSS, JavaScript, C, C++ in addition to
-                modern libraries and frameworks.
+                👋 Hey! I'm Umar, I specialize in crafting seamless web and
+                mobile applications that not only look stunning but also deliver
+                exceptional user experiences.<br />
+                Explore My portfolio to see how I’ve transformed ideas into
+                engaging digital experiences, and let me help you embark on your
+                next project with confidence. Join me on a journey of
+                innovation, creativity, and excellence!
               </p>
               <div class="about-tabs">
                 <p class="tab-links active-link" onclick="openTab('skills')">
@@ -157,7 +182,7 @@
                 <div class="experience-tab-grid-container">
                   <div>
                     <span>2020-2024</span>
-                    <h5>Assoicate Engineer</h5>
+                    <h5>Senior Assoicate</h5>
                     <li>EXL Pvt. Ltd.</li>
                   </div>
                   <div>
@@ -309,56 +334,119 @@
       </div>
       <!-- My Work -->
       <div id="my-work">
-        <div class="my-work-container">
+        <div class="container">
           <h1 class="my-work-text unselectable">My Work</h1>
-          <div class="my-work-list unselectable">
-            <div class="work">
-              <img src="images/work-1.png" alt="" />
-              <div class="layer">
-                <h3>Digital Assistant</h3>
-                <p>
-                  Harnessing Python and NLP, I've crafted a dynamic digital
-                  assistant, seamlessly blending AI capabilities with intuitive
-                  user interactions
-                </p>
-                <a
-                  href="https://github.com/MDUmar-sudo/Digital-Assistant---FRIDAY"
-                  target="_blank"
-                  ><i class="fa-solid fa-square-arrow-up-right"></i
-                ></a>
+        </div>
+        <div class="container">
+          <div class="swiper tranding-slider">
+            <div class="swiper-wrapper unselectable">
+              <!-- Slide-start -->
+              <div class="swiper-slide tranding-slide">
+                <div class="tranding-slide-img">
+                  <img src="images/work-1.png" alt="Tranding" />
+                </div>
+                <div class="tranding-slide-content">
+                  <div class="tranding-slide-content-bottom">
+                    <h3 class="project-name">
+                      Object Detection App
+                    </h3>
+                    <p>
+                      An advance object detection app, leveraging cutting-edge
+                      technology to identify and analyze objects in real-time.
+                    </p>
+                    <a
+                      href="https://github.com/MDUmar-sudo/TRON-using-CNN-/tree/master"
+                      target="_blank"
+                      ><i class="fa-solid fa-square-arrow-up-right"></i
+                    ></a>
+                  </div>
+                </div>
               </div>
+              <!-- Slide-end -->
+              <!-- Slide-start -->
+              <div class="swiper-slide tranding-slide">
+                <div class="tranding-slide-img">
+                  <img src="images/work-2.png" alt="Tranding" />
+                </div>
+                <div class="tranding-slide-content">
+                  <div class="tranding-slide-content-bottom">
+                    <h3 class="project-name">
+                      Digital Assistant
+                    </h3>
+                    <p>
+                      Harnessing Python and NLP, I've crafted a dynamic digital
+                      assistant, seamlessly blending AI capabilities with
+                      intuitive user interactions
+                    </p>
+                    <a
+                      href="https://github.com/MDUmar-sudo/Digital-Assistant---FRIDAY"
+                      target="_blank"
+                      ><i class="fa-solid fa-square-arrow-up-right"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide-end -->
+              <!-- Slide-start -->
+              <div class="swiper-slide tranding-slide">
+                <div class="tranding-slide-img">
+                  <img src="images/work-3.png" alt="Tranding" />
+                </div>
+                <div class="tranding-slide-content">
+                  <div class="tranding-slide-content-bottom">
+                    <h3>ChatBot</h3>
+                    <p>
+                      Experience a sophisticated Python chatbot powered by NLTK,
+                      PyTorch, and Tinkter, offering seamless interaction and
+                      advanced natural language understanding.
+                    </p>
+                    <a
+                      href="https://github.com/MDUmar-sudo/ChatBot"
+                      target="_blank"
+                      ><i class="fa-solid fa-square-arrow-up-right"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide-end -->
+              <!-- Slide-start -->
+              <div class="swiper-slide tranding-slide">
+                <div class="tranding-slide-img">
+                  <img src="images/work-4.png" alt="Tranding" />
+                </div>
+                <div class="tranding-slide-content">
+                  <div class="tranding-slide-content-bottom">
+                    <h3 class="project-name">
+                      Ticket Reservation Date Calculator
+                    </h3>
+                    <p>
+                      A simple and easy website to solve a real life problem of
+                      calculating IRCTC rail ticket booking date problem.
+                      RailTicketDate.in can calculate the advance ticket booking
+                      reservation date and also add to our preferred choice of
+                      calendar to remind us at the right time.
+                    </p>
+                    <a
+                      href="https://railticketdate.netlify.app/"
+                      target="_blank"
+                      ><i class="fa-solid fa-square-arrow-up-right"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide-end -->
             </div>
-            <div class="work">
-              <img src="images/work-2.png" alt="" />
-              <div class="layer">
-                <h3>Object Detection App</h3>
-                <p>
-                  An advance object detection app, leveraging cutting-edge
-                  technology to identify and analyze objects in real-time.
-                </p>
-                <a
-                  href="https://github.com/MDUmar-sudo/TRON-using-CNN-/tree/master"
-                  target="_blank"
-                  ><i class="fa-solid fa-square-arrow-up-right"></i
-                ></a>
+
+            <div class="tranding-slider-control unselectable">
+              <div class="swiper-button-prev slider-arrow">
+                <ion-icon name="arrow-back-outline"></ion-icon>
               </div>
-            </div>
-            <div class="work">
-              <img src="images/work-3.png" alt="" />
-              <div class="layer">
-                <h3>ChatBot</h3>
-                <p>
-                  Experience a sophisticated Python chatbot powered by NLTK,
-                  PyTorch, and Tinkter, offering seamless interaction and
-                  advanced natural language understanding.
-                </p>
-                <a href="https://github.com/MDUmar-sudo/ChatBot" target="_blank"
-                  ><i class="fa-solid fa-square-arrow-up-right"></i
-                ></a>
+              <div class="swiper-button-next slider-arrow">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
               </div>
+              <div class="swiper-pagination"></div>
             </div>
           </div>
-          <a href="#" class="btn unselectable">See More</a>
         </div>
       </div>
       <!-- Contact -->
@@ -390,12 +478,12 @@
                   ><i class="fa-brands fa-square-x-twitter unselectable"></i
                 ></a>
               </div>
-              <a
+              <!-- <a
                 href="Downloadable Files/Md Umar CV.pdf"
                 download=""
                 class="btn btn2 unselectable"
                 >Download CV</a
-              >
+              > -->
             </div>
             <div class="contact-right unselectable">
               <form onsubmit="emailSend(); reset(); return false;">
@@ -429,8 +517,24 @@
           <p>©️ Umar. All rights reserved.</p>
         </div>
       </div>
+      <!-- Back-To-Top-Btn -->
+      <div class="back-to-top">
+        <a href="#" class="to-top"
+          ><ion-icon name="arrow-up-outline"></ion-icon
+        ></a>
+      </div>
     </main>
 
+    <!-- Scripts -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="PortfolioLOGIC.js"></script>
   </body>
 </html>
